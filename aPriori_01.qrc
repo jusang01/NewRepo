@@ -1,0 +1,7 @@
+<RCC>
+    <qresource prefix="/aPriori_01">
+        <file>icon/关闭.svg</file>
+        <file>icon/关闭.png</file>
+        <file>icon/保存.svg</file>
+    </qresource>
+</RCC>

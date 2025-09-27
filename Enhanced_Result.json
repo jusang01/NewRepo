@@ -1,0 +1,162 @@
+[
+  {
+    "Part7": "B",
+    "设备名称": NaN,
+    "特征尺寸（kg\\mm\\m2）": 100.0,
+    "人数": 1,
+    "准备时间（min）": 120,
+    "速率（kg/min、mm/min、m2/min）": 102.0,
+    "设备费率（元/h）": null,
+    "人工费率（元/h）": 250
+  },
+  {
+    "Part7": "A",
+    "设备名称": "A-2",
+    "特征尺寸（kg\\mm\\m2）": 100.0,
+    "人数": 1,
+    "准备时间（min）": 120,
+    "速率（kg/min、mm/min、m2/min）": 101.0,
+    "设备费率（元/h）": null,
+    "人工费率（元/h）": 250
+  },
+  {
+    "Part7": "Q",
+    "设备名称": NaN,
+    "特征尺寸（kg\\mm\\m2）": null,
+    "人数": null,
+    "准备时间（min）": null,
+    "速率（kg/min、mm/min、m2/min）": null,
+    "设备费率（元/h）": null,
+    "人工费率（元/h）": 250
+  },
+  {
+    "Part7": "R",
+    "设备名称": "R-1",
+    "特征尺寸（kg\\mm\\m2）": null,
+    "人数": null,
+    "准备时间（min）": null,
+    "速率（kg/min、mm/min、m2/min）": null,
+    "设备费率（元/h）": 2031.0,
+    "人工费率（元/h）": 250
+  },
+  {
+    "Part7": "S",
+    "设备名称": NaN,
+    "特征尺寸（kg\\mm\\m2）": null,
+    "人数": null,
+    "准备时间（min）": null,
+    "速率（kg/min、mm/min、m2/min）": null,
+    "设备费率（元/h）": null,
+    "人工费率（元/h）": 250
+  },
+  {
+    "Part7": NaN,
+    "设备名称": NaN,
+    "特征尺寸（kg\\mm\\m2）": null,
+    "人数": null,
+    "准备时间（min）": null,
+    "速率（kg/min、mm/min、m2/min）": null,
+    "设备费率（元/h）": null,
+    "人工费率（元/h）": 250
+  },
+  {
+    "Part7": NaN,
+    "设备名称": NaN,
+    "特征尺寸（kg\\mm\\m2）": null,
+    "人数": null,
+    "准备时间（min）": null,
+    "速率（kg/min、mm/min、m2/min）": null,
+    "设备费率（元/h）": null,
+    "人工费率（元/h）": 250
+  },
+  {
+    "Part7": NaN,
+    "设备名称": NaN,
+    "特征尺寸（kg\\mm\\m2）": null,
+    "人数": null,
+    "准备时间（min）": null,
+    "速率（kg/min、mm/min、m2/min）": null,
+    "设备费率（元/h）": null,
+    "人工费率（元/h）": 250
+  },
+  {
+    "Part7": NaN,
+    "设备名称": NaN,
+    "特征尺寸（kg\\mm\\m2）": null,
+    "人数": null,
+    "准备时间（min）": null,
+    "速率（kg/min、mm/min、m2/min）": null,
+    "设备费率（元/h）": null,
+    "人工费率（元/h）": 250
+  },
+  {
+    "Part7": NaN,
+    "设备名称": NaN,
+    "特征尺寸（kg\\mm\\m2）": null,
+    "人数": null,
+    "准备时间（min）": null,
+    "速率（kg/min、mm/min、m2/min）": null,
+    "设备费率（元/h）": null,
+    "人工费率（元/h）": 250
+  },
+  {
+    "Part7": NaN,
+    "设备名称": NaN,
+    "特征尺寸（kg\\mm\\m2）": null,
+    "人数": null,
+    "准备时间（min）": null,
+    "速率（kg/min、mm/min、m2/min）": null,
+    "设备费率（元/h）": null,
+    "人工费率（元/h）": 250
+  },
+  {
+    "Part7": NaN,
+    "设备名称": NaN,
+    "特征尺寸（kg\\mm\\m2）": null,
+    "人数": null,
+    "准备时间（min）": null,
+    "速率（kg/min、mm/min、m2/min）": null,
+    "设备费率（元/h）": null,
+    "人工费率（元/h）": 250
+  },
+  {
+    "Part7": NaN,
+    "设备名称": NaN,
+    "特征尺寸（kg\\mm\\m2）": null,
+    "人数": null,
+    "准备时间（min）": null,
+    "速率（kg/min、mm/min、m2/min）": null,
+    "设备费率（元/h）": null,
+    "人工费率（元/h）": 250
+  },
+  {
+    "Part7": NaN,
+    "设备名称": NaN,
+    "特征尺寸（kg\\mm\\m2）": null,
+    "人数": null,
+    "准备时间（min）": null,
+    "速率（kg/min、mm/min、m2/min）": null,
+    "设备费率（元/h）": null,
+    "人工费率（元/h）": 250
+  },
+  {
+    "Part7": NaN,
+    "设备名称": NaN,
+    "特征尺寸（kg\\mm\\m2）": null,
+    "人数": null,
+    "准备时间（min）": null,
+    "速率（kg/min、mm/min、m2/min）": null,
+    "设备费率（元/h）": null,
+    "人工费率（元/h）": 250
+  },
+  {
+    "Part7": NaN,
+    "设备名称": NaN,
+    "特征尺寸（kg\\mm\\m2）": null,
+    "人数": null,
+    "准备时间（min）": null,
+    "速率（kg/min、mm/min、m2/min）": null,
+    "设备费率（元/h）": null,
+    "人工费率（元/h）": 250
+  }
+]
