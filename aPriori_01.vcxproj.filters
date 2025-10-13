@@ -60,9 +60,6 @@
     <QtMoc Include="priorimainwindow.h">
       <Filter>Header Files</Filter>
     </QtMoc>
-    <QtMoc Include="projecttab.h">
-      <Filter>Header Files</Filter>
-    </QtMoc>
     <QtMoc Include="request\GetCostHttpAction.h">
       <Filter>Header Files</Filter>
     </QtMoc>
@@ -70,6 +67,9 @@
       <Filter>Header Files</Filter>
     </QtMoc>
     <QtMoc Include="request\PostAccountHttpAction.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <QtMoc Include="projecttab.h">
       <Filter>Header Files</Filter>
     </QtMoc>
   </ItemGroup>

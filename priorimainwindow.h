@@ -28,6 +28,8 @@ public:
     void saveDocToFile(const QString& text);
     //调用脚本去计算成本
     void commandCalculatorOfCost(const QString& text);
+    //将表单进行显示
+    void showCostTable(const QString& text);
 
 public slots:
     void onOpenExistingFile();
@@ -38,6 +40,7 @@ public slots:
 
 private:
     Ui::PrioriMainWindow *ui;
+	QVector<ProjectTab*> m_tabs;
 };
 
 #endif // PRIORIMAINWINDOW_H

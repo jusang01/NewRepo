@@ -6,6 +6,9 @@
 #include <QTableWidget>
 #include <QFile>
 #include <QMessageBox>
+#include "xlsxcellrange.h"
+#include "xlsxdocument.h"
+#include "xlsxworkbook.h"
 
 #pragma execution_character_set("utf-8")
 
@@ -50,6 +53,7 @@ void PrioriMainWindow::addDuplicatePageFromUiFile(QTabWidget* tabWidget,const QS
     //QWidget* newPage = loader.load(&uiFile, tabWidget);
 
     ProjectTab* tabtmp = new ProjectTab(tabWidget);
+	m_tabs.push_back(tabtmp);
     tabtmp->setAttribute(Qt::WA_DeleteOnClose);
     int cur = tabWidget->addTab(tabtmp,filename);
     tabWidget->setCurrentWidget(tabtmp);
@@ -118,6 +122,20 @@ void PrioriMainWindow::commandCalculatorOfCost(const QString& text)
     }
 }
 
+void PrioriMainWindow::showCostTable(const QString& text)
+{
+    QXlsx::Document xlsx("calculated_result.csv");
+
+    int rowCount = xlsx.dimension().lastRow()- xlsx.dimension().firstRow()+1;
+	int colCount = xlsx.dimension().lastColumn()-xlsx.dimension().firstColumn()+1;
+
+
+
+
+
+
+}
+
 void PrioriMainWindow::onOpenExistingFile()
 {
     QString fileName = QFileDialog::getOpenFileName(this, u8"打开文件", "./", "All Files (*)");
@@ -142,8 +160,9 @@ void PrioriMainWindow::onSaveProject()
 
 void PrioriMainWindow::onTestCostRequest()
 {
+	//测试表单请求
     int type = 1;
-    int number = 6;
+    int number = 0;
     GetCostHttpAction* costhttp = new GetCostHttpAction(this);
     connect(costhttp, &GetCostHttpAction::sigSuccess, this, &PrioriMainWindow::onDataSuccess);
     connect(costhttp, &GetCostHttpAction::sigFailed, this, &PrioriMainWindow::onDataFailed);

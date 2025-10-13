@@ -1,5 +1,12 @@
 #include "projecttab.h"
 #include "ui_projecttab.h"
+#include <QDialog>
+#include <QFile>
+#include "xlsxcellrange.h"
+#include "xlsxdocument.h"
+#include "xlsxworkbook.h"
+
+#pragma execution_character_set("utf-8")
 
 ProjectTab::ProjectTab(QWidget *parent)
     : QWidget(parent)
@@ -66,6 +73,42 @@ void ProjectTab::initUI()
     ui->tableWidget_detail->setUpdatesEnabled(true);
 }
 
+void ProjectTab::showDataBaseTable(const QString& filename)
+{
+    
+}
+
+bool ProjectTab::convertCsvToXlsx(const QString& csvPath, const QString& xlsxPath)
+{
+    QFile csvFile(csvPath);
+    if (!csvFile.open(QIODevice::ReadOnly | QIODevice::Text)) {
+        qDebug() << "无法打开 CSV 文件:" << csvPath;
+        return false;
+    }
+    QXlsx::Document xlsx;
+    QTextStream in(&csvFile);
+    int row = 1;
+
+    while (!in.atEnd()) {
+        QString line = in.readLine();
+        QStringList fields = line.split(',');
+
+        for (int col = 0; col < fields.size(); ++col) {
+            // 移除可能的引号
+            QString value = fields[col];
+            if (value.startsWith('"') && value.endsWith('"')) {
+                value = value.mid(1, value.length() - 2);
+            }
+            xlsx.write(row, col + 1, value);
+        }
+        row++;
+    }
+
+    csvFile.close();
+    return xlsx.saveAs(xlsxPath);
+
+}
+
 void ProjectTab::onSetButtonStyleSheet()
 {
     QPushButton* btn_tmp = qobject_cast<QPushButton*>(QObject::sender());
@@ -93,7 +136,58 @@ void ProjectTab::onSetButtonStyleSheet()
 
 void ProjectTab::onShowList()
 {
+	//显示成本总结表单
+    //待完成，根据不同的页面进行成本计算结果筛选
 
+	QDialog* dlg = new QDialog(this);
+    dlg->setAttribute(Qt::WA_DeleteOnClose);
+    dlg->setWindowModality(Qt::ApplicationModal);
+    dlg->setWindowTitle("成本总结");
+    dlg->resize(800, 600);
+    dlg->setStyleSheet("background-color: white;");
+	QVBoxLayout* layout = new QVBoxLayout(dlg);
+
+    QString csvPath = QApplication::applicationDirPath() + "/calculated_result.csv";
+    QString xlsxPath = QApplication::applicationDirPath() + "/converted_result.xlsx";
+
+    if (!convertCsvToXlsx(csvPath, xlsxPath)) {
+        return;
+    }
+
+    
+
+    QXlsx::Document xlsx(xlsxPath);
+    int rowCount = xlsx.dimension().lastRow() - xlsx.dimension().firstRow() + 1;
+    int colCount = xlsx.dimension().lastColumn() - xlsx.dimension().firstColumn() + 1;
+
+    QTableWidget* table = new QTableWidget(dlg);
+	table->setRowCount(rowCount);
+	table->setColumnCount(colCount);
+	layout->addWidget(table);
+    table->setUpdatesEnabled(false);
+
+    //添加数据
+    for(int row = 1; row <= rowCount; row++)
+    {
+        for(int col = 1; col <= colCount; col++)
+        {
+            QTableWidgetItem* item = new QTableWidgetItem();
+
+            QVariant cellvalue = xlsx.read(row, col);
+            if (cellvalue.type() == QVariant::Double)
+            {
+                item->setData(Qt::DisplayRole, cellvalue);
+            }
+            else if (cellvalue.type() == QVariant::String)
+            {
+                item->setText(cellvalue.toString());
+            }
+            table->setItem(row - 1, col - 1, item);
+        }
+	}
+
+    table->setUpdatesEnabled(true);
+    dlg->show();
 }
 
 void ProjectTab::onCloseCostWidget()

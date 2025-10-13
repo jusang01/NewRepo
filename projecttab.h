@@ -20,6 +20,11 @@ public:
     void initConnection();
     void initUI();
 
+    //展示表格删选数据
+	void showDataBaseTable(const QString& filename);
+    //csv转换为xlsx格式
+    bool convertCsvToXlsx(const QString& csvPath, const QString& xlsxPath);
+
 public slots:
     void onSetButtonStyleSheet(); 
     void onShowList();
