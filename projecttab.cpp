@@ -71,6 +71,12 @@ void ProjectTab::initUI()
 
     ui->tableWidget_cost->setUpdatesEnabled(true);
     ui->tableWidget_detail->setUpdatesEnabled(true);
+
+    QPixmap pixmap(":/aPriori_01/icon/³É±¾.png");
+
+    ui->label_cost->setPixmap(pixmap);
+    ui->label_cost->setScaledContents(true);
+
 }
 
 void ProjectTab::showDataBaseTable(const QString& filename)

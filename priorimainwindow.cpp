@@ -62,11 +62,11 @@ void PrioriMainWindow::addDuplicatePageFromUiFile(QTabWidget* tabWidget,const QS
     tabWidget->setStyleSheet(R"(
         QTabBar::tab:selected {
             background: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1,
-                                        stop: 0 #6A11CB, stop: 1 #2575FC);
+                                        stop: 0 #B39DDB, stop: 1 #90CAF9);
         }
         QTabBar::tab:!selected {
             background: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1,
-                                        stop: 0 #E1E1E1, stop: 1 #D3D3D3);
+                                        stop: 0 #F5F5F5, stop: 1 #EEEEEE);
         }
     )");
 }

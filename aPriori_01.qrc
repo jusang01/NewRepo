@@ -3,5 +3,6 @@
         <file>icon/关闭.svg</file>
         <file>icon/关闭.png</file>
         <file>icon/保存.svg</file>
+        <file>icon/成本.png</file>
     </qresource>
 </RCC>
