@@ -55,6 +55,9 @@
     <ClCompile Include="request\PostAccountHttpAction.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="SequentialVBSRunner.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <QtMoc Include="priorimainwindow.h">
@@ -70,6 +73,9 @@
       <Filter>Header Files</Filter>
     </QtMoc>
     <QtMoc Include="projecttab.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <QtMoc Include="SequentialVBSRunner.h">
       <Filter>Header Files</Filter>
     </QtMoc>
   </ItemGroup>

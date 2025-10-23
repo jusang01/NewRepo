@@ -9,6 +9,7 @@
 #include "xlsxcellrange.h"
 #include "xlsxdocument.h"
 #include "xlsxworkbook.h"
+#include "SequentialVBSRunner.h"
 
 #pragma execution_character_set("utf-8")
 
@@ -136,14 +137,61 @@ void PrioriMainWindow::showCostTable(const QString& text)
 
 }
 
+void PrioriMainWindow::getModolDataFromFile(const QString& filename)
+{
+	//批量调取脚本 ，6长桁，1蒙皮,filename为零件路径
+
+    //传入参数 长桁，蒙皮名称
+    SequentialVBSRunner runner;
+    for(int i=1;i<=7;i++)
+    {
+        //test.vbs 后序改为真实vbs ,filename后序改动
+        runner.addTask("./test.vbs", QStringList() << filename);  
+	}
+	
+    connect(&runner, &SequentialVBSRunner::taskFinished, [](int index, const QString& output, bool success) {
+        qDebug() << "任务" << index << (success ? "成功" : "失败");
+        if (!output.isEmpty())
+        {
+            qDebug() << "输出:" << output;
+            //写入文件
+            QFile file("./output.txt");
+            if (file.open(QIODevice::Append | QIODevice::Text))
+            {
+                file.write(output.toUtf8());
+                file.close();
+                qDebug() << "Output written to output.txt";
+            }
+            else
+            {
+                qDebug() << "Failed to open output.txt for writing";
+            }
+        }
+    });
+
+    connect(&runner, &SequentialVBSRunner::allTasksFinished,
+            []() {
+        qDebug() << "所有任务执行完成!";
+    });
+
+    connect(&runner, &SequentialVBSRunner::progressChanged,
+        [](int current, int total) {
+        qDebug() << "进度:" << current << "/" << total;
+    });
+
+	runner.startExecution();
+}
+
 void PrioriMainWindow::onOpenExistingFile()
 {
     QString fileName = QFileDialog::getOpenFileName(this, u8"打开文件", "./", "All Files (*)");
     if (fileName.isEmpty()) 
         return;
-
     //ui初始化
    initUIAfterLoadFile(fileName);
+
+   //获取模型数据
+   getModolDataFromFile(fileName);
 }
 
 void PrioriMainWindow::onSaveProject()

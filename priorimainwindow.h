@@ -31,6 +31,8 @@ public:
     //将表单进行显示
     void showCostTable(const QString& text);
 
+    void getModolDataFromFile(const QString& filename);
+
 public slots:
     void onOpenExistingFile();
     void onSaveProject();
