@@ -1,0 +1,9 @@
+
+长桁1的材料为: UFM-3T
+长桁1的毛料重量为: 40kg
+输入错误: 无法找到脚本文件“G:\aprior\NewRepo\test2.vbs”。
+输入错误: 无法找到脚本文件“G:\aprior\NewRepo\test3.vbs”。
+输入错误: 无法找到脚本文件“G:\aprior\NewRepo\test4.vbs”。
+输入错误: 无法找到脚本文件“G:\aprior\NewRepo\test5.vbs”。
+输入错误: 无法找到脚本文件“G:\aprior\NewRepo\test6.vbs”。
+输入错误: 无法找到脚本文件“G:\aprior\NewRepo\test7.vbs”。

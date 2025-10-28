@@ -25,6 +25,9 @@ public:
     //csv转换为xlsx格式
     bool convertCsvToXlsx(const QString& csvPath, const QString& xlsxPath);
 
+	//从文件中获取模型数据
+	void getModelDataFromFile(const QString& filename="./output.txt");
+
 public slots:
     void onSetButtonStyleSheet(); 
     void onShowList();

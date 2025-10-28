@@ -24,7 +24,7 @@ private:
 
 signals:
 	void allTasksFinished();
-	void taskFinished(int index, const QString& output, bool success);
+	void taskFinished(int index, const QByteArray& output, bool success);
 	void progressChanged(int current, int total);
 
 private slots:

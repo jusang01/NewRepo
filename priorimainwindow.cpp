@@ -58,6 +58,7 @@ void PrioriMainWindow::addDuplicatePageFromUiFile(QTabWidget* tabWidget,const QS
     tabtmp->setAttribute(Qt::WA_DeleteOnClose);
     int cur = tabWidget->addTab(tabtmp,filename);
     tabWidget->setCurrentWidget(tabtmp);
+    //tabtmp->getModelDataFromFile();
 
     // 设置选项卡样式
     tabWidget->setStyleSheet(R"(
@@ -142,23 +143,25 @@ void PrioriMainWindow::getModolDataFromFile(const QString& filename)
 	//批量调取脚本 ，6长桁，1蒙皮,filename为零件路径
 
     //传入参数 长桁，蒙皮名称
-    SequentialVBSRunner runner;
+    SequentialVBSRunner* runner = new SequentialVBSRunner;
     for(int i=1;i<=7;i++)
     {
-        //test.vbs 后序改为真实vbs ,filename后序改动
-        runner.addTask("./test.vbs", QStringList() << filename);  
+        //test.vbs 后序改为真实vbs ,filename后序改动 ，为长桁或蒙皮名称
+		QString taskname = QString("./test%1.vbs").arg(i);
+        runner->addTask(taskname, QStringList() << filename);
 	}
 	
-    connect(&runner, &SequentialVBSRunner::taskFinished, [](int index, const QString& output, bool success) {
+    connect(runner, &SequentialVBSRunner::taskFinished, [](int index, const QByteArray& output, bool success) {
         qDebug() << "任务" << index << (success ? "成功" : "失败");
         if (!output.isEmpty())
         {
-            qDebug() << "输出:" << output;
+            QString str = QString::fromLocal8Bit(output);
+            qDebug() << "输出:" << str;
             //写入文件
             QFile file("./output.txt");
             if (file.open(QIODevice::Append | QIODevice::Text))
             {
-                file.write(output.toUtf8());
+                file.write(str.toLocal8Bit());
                 file.close();
                 qDebug() << "Output written to output.txt";
             }
@@ -169,17 +172,19 @@ void PrioriMainWindow::getModolDataFromFile(const QString& filename)
         }
     });
 
-    connect(&runner, &SequentialVBSRunner::allTasksFinished,
-            []() {
+    connect(runner, &SequentialVBSRunner::allTasksFinished,
+            [this]() {
         qDebug() << "所有任务执行完成!";
+        ProjectTab* tabtmp = m_tabs.last();
+        tabtmp->getModelDataFromFile();
     });
 
-    connect(&runner, &SequentialVBSRunner::progressChanged,
+    connect(runner, &SequentialVBSRunner::progressChanged,
         [](int current, int total) {
         qDebug() << "进度:" << current << "/" << total;
     });
 
-	runner.startExecution();
+	runner->startExecution();
 }
 
 void PrioriMainWindow::onOpenExistingFile()
@@ -192,6 +197,7 @@ void PrioriMainWindow::onOpenExistingFile()
 
    //获取模型数据
    getModolDataFromFile(fileName);
+
 }
 
 void PrioriMainWindow::onSaveProject()

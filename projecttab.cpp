@@ -115,6 +115,28 @@ bool ProjectTab::convertCsvToXlsx(const QString& csvPath, const QString& xlsxPat
 
 }
 
+void ProjectTab::getModelDataFromFile(const QString& filename)
+{
+	QFile file(filename);
+    if (!file.open(QIODevice::ReadOnly | QIODevice::Text))
+    {
+        qDebug() << "无法打开文件：" << filename;
+        return;
+	}
+
+    QByteArray text = file.readAll();
+    QString output = QString::fromLocal8Bit(text);
+    QStringList info = output.split(QRegularExpression("[\r\n]+"), Qt::SkipEmptyParts);
+    for (const QString& line : info) {
+        if (line.contains("材料"))
+        {
+			QString material = line.section(':', 1).trimmed();
+            ui->lineEdit_2->setText(material);  //材料
+        }
+
+    }
+}
+
 void ProjectTab::onSetButtonStyleSheet()
 {
     QPushButton* btn_tmp = qobject_cast<QPushButton*>(QObject::sender());

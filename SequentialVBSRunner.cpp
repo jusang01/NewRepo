@@ -49,10 +49,10 @@ void SequentialVBSRunner::onProcessFinished(int exitCode, QProcess::ExitStatus e
 	//获取输出结果
 	QByteArray output = process->readAllStandardOutput();
 	QByteArray error = process->readAllStandardError();
-	QString outputStr = QString::fromLocal8Bit(output);
+	//QString outputStr = QString::fromLocal8Bit(output);
 
 	bool success = (exitStatus == QProcess::NormalExit && exitCode == 0);
-	emit taskFinished(m_currentIndex, outputStr, success);
+	emit taskFinished(m_currentIndex, output, success);
 	emit progressChanged(m_currentIndex + 1, m_tasks.size());
 
 	process->deleteLater();
